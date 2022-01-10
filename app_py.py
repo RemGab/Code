@@ -8,6 +8,10 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.stacklayout import StackLayout
 
 
+class WidgetExample(GridLayout):
+    
+
+
 
 class StackLayoutExample(StackLayout):
     def __init__(self, **kwargs):
