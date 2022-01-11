@@ -9,7 +9,7 @@ from kivy.uix.stacklayout import StackLayout
 
 
 class WidgetExample(GridLayout):
-    
+    pass
 
 
 
