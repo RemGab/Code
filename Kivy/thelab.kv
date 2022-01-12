@@ -1,4 +1,39 @@
-WidgetExample:
+CanvasExample2:
+
+#:set s dp(150)
+
+<CanvasExample2>:
+    canvas:
+        Line:
+            points:(self.width/2,0,self.width/2,self.height)
+        Line:
+            points:(0,self.height/2,self.width,self.height/2)
+            
+
+<CanvasExample1>:
+    canvas:
+        Rectangle:
+            pos: self.center_x-s/2, self.center_y-s/2
+            size: s,s
+        Ellipse:
+            pos:200,500
+            size: s , s/2
+        Line:
+            points:(0,0,self.width/4,100,self.width/2,0,self.width*3/4,100, self.width,0)
+            width : 2
+
+
+<ImagesExample@GridLayout>:
+    cols: 3
+    Image:
+        source:'images/cake.jpg'
+    Image:
+        source:'images/cake.jpg'
+        allow_stretch : True
+    Image:
+        source:'images/cake.jpg'
+        allow_stretch : True
+        keep_ratio: False
 
 
 <WidgetExample>:
@@ -77,7 +112,7 @@ WidgetExample:
     cols: 3
     rows:2
     Button:
-        text:'A'
+        text:'A' 
         size_hint: None,1
         width:'60dp'
     BoxLayoutExample
