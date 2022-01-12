@@ -3,13 +3,31 @@ WidgetExample:
 
 <WidgetExample>:
     cols: 3
+    ToggleButton:
+        text :'OFF'
+        on_state : root.on_toggle_button_state(self)
+        size_hint : None,1
+        width : '100dp'
     Button:
         text:'Click Here'
         on_press: root.on_button_click()
+        disabled: not root.count_enabled
     Label:
         text: root.my_text
         font_name: 'fonts/Lcd.ttf'
         font_size: '88dp'
+        color: 1,.5,1
+    Switch:
+        on_active : root.on_switch_active(self)
+        size_hint : None,1
+        width : '100dp'
+    Slider:
+        min: 0
+        max: 100
+        value: 50
+        on_value : root.on_slider_value(self)
+        orientation : 'vertical'
+
 
 
 <PageLayoutExample@PageLayout>:
