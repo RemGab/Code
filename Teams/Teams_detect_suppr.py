@@ -1,27 +1,29 @@
 import keyboard
 import pyautogui
+import cv2
+import numpy as np
+import pyautogui as pg
+import time
 path = r'Teams\Resources'
 
 def detect_fleche_li():
-    import cv2
-    import numpy as np
-    import pyautogui as pg
+    print('ça lance')
     screenshot = pg.screenshot()
-    # C:\Users\remi.gaboreau\Desktop\TEMPORAIRE\script\GITHUB\Code\Teams\Resources\
     screenshot = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2BGR)
-    for pawn in pg.locateAllOnScreen(path + '\fleche.jpg', confidence=0.8):
+    for pawn in pg.locateOnScreen(path + '\fleche.jpg', confidence=0.6):
         try:
+            print(' c try')
             pg.moveTo(pawn)
             pg.click()
             break
         except:
+            print(' c except')
+
             pass
+    print('c rien')
 
 
 def croix_outl():
-    import cv2
-    import numpy as np
-    import pyautogui as pg
     screenshot = pg.screenshot()
     screenshot = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2BGR)
     for pawn in pg.locateAllOnScreen(path + '\close_outl.jpg', confidence=0.8):
@@ -33,24 +35,27 @@ def croix_outl():
             pass
 
 def lecture_immersive():
-    import cv2
-    import numpy as np
-    import pyautogui as pg
+    # print('LI')
     screenshot = pg.screenshot()
     screenshot = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2BGR)
     for pawn in pg.locateAllOnScreen(path + '\li.jpg', confidence=0.8):
         try:
             detect_fleche_li()
             print("Commande effectuée")
+        except:
+            pass
 
+def detect_book():
+    screenshot = pg.screenshot()
+    screenshot = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2BGR)
+    for pawn in pg.locateAllOnScreen(path + '\play.jpg', confidence=0.8):
+        try:
+            detect_fleche_li()
+            print("Commande effectuée")
         except:
             pass
 
 def outlook():
-    import cv2
-    import numpy as np
-    import pyautogui as pg
-    import time
     screenshot = pg.screenshot()
     screenshot = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2BGR)
     for pawn in pg.locateAllOnScreen(path + '\outl.jpg', confidence=0.99):
@@ -162,6 +167,7 @@ while True:
     try:
         if i == 3:
             lecture_immersive()
+            detect_book()
             outlook()
             i = 0
         if keyboard.is_pressed('right'):
@@ -184,6 +190,6 @@ while True:
         if keyboard.is_pressed('right'):
             break
         i += 1
-        print(i)
+        # print(i)
     except:
         pass
