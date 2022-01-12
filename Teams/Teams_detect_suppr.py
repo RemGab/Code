@@ -1,6 +1,6 @@
 import keyboard
 import pyautogui
-path = '\Resources'
+path = r'Teams\Resources'
 
 def detect_fleche_li():
     import cv2
@@ -154,7 +154,7 @@ def transition():
     pg.scroll(s)
     pg.scroll(-s)
     pg.scroll(s)
-    time.sleep(1)
+    time.sleep(0.1)
 
 
 i = 0
