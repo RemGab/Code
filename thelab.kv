@@ -1,12 +1,15 @@
 WidgetExample:
 
 
-<WidgetExample@GridLayout>:
+<WidgetExample>:
     cols: 3
     Button:
         text:'Click Here'
+        on_press: root.on_button_click()
     Label:
-        text:'Hello'
+        text: root.my_text
+        font_name: 'fonts/Lcd.ttf'
+        font_size: '88dp'
 
 
 <PageLayoutExample@PageLayout>:
