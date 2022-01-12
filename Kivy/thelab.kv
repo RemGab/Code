@@ -18,15 +18,38 @@ WidgetExample:
         font_size: '88dp'
         color: 1,.5,1
     Switch:
+        id : my_switch
         on_active : root.on_switch_active(self)
         size_hint : None,1
         width : '100dp'
+        active: True
     Slider:
+        id : my_slider
         min: 0
         max: 100
         value: 50
-        on_value : root.on_slider_value(self)
+        # on_value : root.on_slider_value(self)
         orientation : 'vertical'
+        disabled: not my_switch.active
+
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: str(int(my_slider.value))
+            font_name: 'fonts/Lcd.ttf'
+            font_size: '88dp'
+        ProgressBar:
+            max:100
+            value:my_slider.value
+    TextInput:
+        size_hint : None,1
+        width : '100dp'
+        id: my_TI
+        text:'text'
+        multiline : False
+        on_text_validate: root.on_text_validate(self)
+    Label:
+        text:"Your name is: " + root.text_input_str
 
 
 
