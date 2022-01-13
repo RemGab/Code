@@ -4,23 +4,21 @@ import cv2
 import numpy as np
 import pyautogui as pg
 import time
+import ctypes
 path = r'Teams\Resources'
 
 def detect_fleche_li():
-    print('ça lance')
     screenshot = pg.screenshot()
     screenshot = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2BGR)
-    for pawn in pg.locateOnScreen(path + '\fleche.jpg', confidence=0.6):
+    for pawn in pg.locateOnScreen(path + '\fleche.jpg', confidence=0.8):
         try:
-            print(' c try')
-            pg.moveTo(pawn)
             pg.click()
+            pg.click()
+            VK_ESCAPE = 0x1B
+            ctypes.windll.user32.keybd_event(VK_ESCAPE)
             break
         except:
-            print(' c except')
-
             pass
-    print('c rien')
 
 
 def croix_outl():
@@ -41,6 +39,7 @@ def lecture_immersive():
     for pawn in pg.locateAllOnScreen(path + '\li.jpg', confidence=0.8):
         try:
             detect_fleche_li()
+            pg.moveTo(pawn)
             print("Commande effectuée")
         except:
             pass
@@ -48,9 +47,16 @@ def lecture_immersive():
 def detect_book():
     screenshot = pg.screenshot()
     screenshot = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2BGR)
-    for pawn in pg.locateAllOnScreen(path + '\play.jpg', confidence=0.8):
+    pawn = pg.locateAllOnScreen(path + '\play.jpg', confidence=0.8)
+    if pawn :
         try:
-            detect_fleche_li()
+            # pg.click()
+            # pg.click()
+            for i in range(0,3):
+                pg.click()
+                VK_ESCAPE = 0x1B
+                ctypes.windll.user32.keybd_event(VK_ESCAPE)
+            # detect_fleche_li()
             print("Commande effectuée")
         except:
             pass
@@ -58,9 +64,12 @@ def detect_book():
 def outlook():
     screenshot = pg.screenshot()
     screenshot = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2BGR)
-    for pawn in pg.locateAllOnScreen(path + '\outl.jpg', confidence=0.99):
+    for pawn in pg.locateAllOnScreen(path + '\outl.jpg', confidence=0.9):
         try:
-            croix_outl()
+            # croix_outl()
+            # time.sleep(2)            
+            VK_ESCAPE = 0x1B
+            ctypes.windll.user32.keybd_event(VK_ESCAPE)
             time.sleep(2)
             keyboard.press('ENTER')
             print("Commande effectuée")
@@ -79,8 +88,9 @@ def suppr_detection():
         while True:
             try:
                 pg.moveTo(pawn)
-                time.sleep(0.01)
+                time.sleep(0.1)
                 pg.click()
+                time.sleep(0.1)
                 break
             except:
                 pass
@@ -105,7 +115,7 @@ def message_detection():
         if w > 50 and h > 25 and y > 100 and x+w > 1700 and w != 369 and h != 53 and h != 54 and w != 371:
             cv2.rectangle(image_copy, (x, y), (x+w, y+h), (0, 255, 0), 3)
             pg.moveTo(1850, 560)
-            time.sleep(0.01)
+            time.sleep(0.2)
             pg.click()
             pg.moveTo(x+w-5, y+h/2)
             while True:
@@ -159,7 +169,7 @@ def transition():
     pg.scroll(s)
     pg.scroll(-s)
     pg.scroll(s)
-    time.sleep(0.1)
+    time.sleep(1)
 
 
 i = 0
