@@ -81,6 +81,9 @@ class MainWidget(Widget):
 class TheLabApp(App):
     pass
 
+class CanvasExample3(Widget):
+    pass
+
 class CanvasExample2(Widget):
     pass
 
