@@ -81,6 +81,12 @@ class MainWidget(Widget):
 class TheLabApp(App):
     pass
 
+class CanvasExample7(BoxLayout):
+    pass
+
+class CanvasExample6(Widget):
+    pass
+
 class CanvasExample5(Widget):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
