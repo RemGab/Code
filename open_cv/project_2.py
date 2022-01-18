@@ -89,6 +89,6 @@ while True :
     cv2.imshow('Image', img)
     cv2.waitKey(1)
     
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    if cv2.waitKey(25) & 0xFF == ord('q'):
         cv2.destroyAllWindows
         break
