@@ -7,6 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from fake_useragent import UserAgent
+import random as random
 
 options = webdriver.ChromeOptions()
 options.add_argument("--window-size=1100,1000")
@@ -19,7 +20,12 @@ userAgent = ua.random
 print(userAgent)
 options.add_argument(f'user-agent={userAgent}')
 
-driver = webdriver.Chrome(options=options, executable_path='Bot_SNCF\Ressources\chromedriver.exe')  # Optional argument, if not specified will search path.
+try :
+    driver = webdriver.Chrome(options=options, executable_path='Bot_SNCF\Ressources\chromedriver.exe')  # Optional argument, if not specified will search path.
+except:
+    driver = webdriver.Firefox(options=options, executable_path='Bot_SNCF\Ressources\geckodriver.exe')  # Optional argument, if not specified will search path.
+
+    
 
 driver.get('https://www.sncf-connect.com/app/account')
 
