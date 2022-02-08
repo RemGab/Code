@@ -42,6 +42,6 @@ try:
 except:
     pass
 
-time.sleep(10)
+time.sleep(800)
 
 driver.quit()
